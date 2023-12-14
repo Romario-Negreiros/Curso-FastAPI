@@ -13,4 +13,5 @@ async def create_tables() -> None:
 if __name__ == "__main__":
     import asyncio
     
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(create_tables())
