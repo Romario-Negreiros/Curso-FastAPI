@@ -2,4 +2,4 @@ Lib
 Include
 Scripts
 __pycache__
-pyenv.cfg
+pyvenv.cfg
