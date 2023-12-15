@@ -21,11 +21,13 @@ class Curso(BaseModel):
     
     @validator("aulas")
     def validarAulas(cls, value: int):
-        if value > 1000:
-            raise ValueError("Aulas deve ser menor que 1000")
+        if value < 10:
+            raise ValueError("Aulas deve ser maior que 10")
 
 
 cursos = [
-    Curso(id=1, titulo="Prog", aulas=112, horas=58),
-    Curso(id=2, titulo="Algorit", aulas=12, horas=508),
+    Curso(id=1, titulo="Progamação", aulas=112, horas=58),
+    Curso(id=2, titulo="Algoritmos", aulas=12, horas=5),
+    Curso(id=3, titulo="Dados", aulas=27, horas=15),
+    Curso(id=4, titulo="Matematica", aulas=90, horas=54),
 ]

@@ -22,7 +22,7 @@ class UsuarioSchemaCreate(UsuarioSchemaBase):
 class UsuariosSchemaArtigos(UsuarioSchemaBase):
     artigos: Optional[List[ArtigoSchema]]
 
-
+# Usado no update
 class UsuarioSchemaUp(UsuarioSchemaBase):
     nome: Optional[str]
     sobrenome: Optional[str]

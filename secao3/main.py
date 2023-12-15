@@ -44,7 +44,7 @@ async def getCursos(db: Any = Depends(fakeDb)):
 
 @app.get("/cursos/{id}", status_code=status.HTTP_200_OK)  # greater than / lower than
 async def getCurso(
-    id: int = Path(title="Id do curso", description="Range(1,2)", gt=0, lt=3)
+    id: int = Path(default=None, title="Id do curso", description="Range(1,2)", gt=0, lt=3)
 ):
     curso = next((curso for curso in cursos if curso.id == id), False) # next iterator
     if not curso:
@@ -90,9 +90,9 @@ async def deleteCurso(id: int):
 
 
 # Exemplo headers
-@app.get("/test_header")
-async def calculadora(x_header: str = Header()):
-    return f"Header recebido: {x_header}"
+# @app.get("/test_header")
+# async def calculadora(x_header: str = Header()):
+#     return f"Header recebido: {x_header}"
 
 
 if __name__ == "__main__":
