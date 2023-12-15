@@ -25,7 +25,7 @@ class UsuariosSchemaArtigos(UsuarioSchemaBase):
 
 class UsuarioSchemaUp(UsuarioSchemaBase):
     nome: Optional[str]
-    descricao: Optional[str]
+    sobrenome: Optional[str]
     email: Optional[EmailStr]
     senha: Optional[str]
     eh_admin: Optional[bool]

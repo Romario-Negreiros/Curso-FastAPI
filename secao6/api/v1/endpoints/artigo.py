@@ -76,20 +76,20 @@ async def put_artigo(
         result = await session.execute(query)
         artigo_up = result.scalars().unique().one_or_none()
     
-    if artigo_up == None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Artigo não encontrado"
-        )
-        
-    if artigo_up.usuario_id != usuario_logado.id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN, detail="Somente o dono do artigo tem permissão para editá-lo"
-        )
-    artigo_up.titulo = artigo.titulo or artigo_up.titulo
-    artigo_up.descricao = artigo.descricao or artigo_up.descricao
-    artigo_up.url_fonte = artigo.url_fonte or artigo_up.url_fonte
-    
-    return artigo_up
+        if artigo_up == None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="Artigo não encontrado"
+            )
+            
+        if artigo_up.usuario_id != usuario_logado.id:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN, detail="Somente o dono do artigo tem permissão para editá-lo"
+            )
+        artigo_up.titulo = artigo.titulo or artigo_up.titulo
+        artigo_up.descricao = artigo.descricao or artigo_up.descricao
+        artigo_up.url_fonte = artigo.url_fonte or artigo_up.url_fonte
+        await session.commit()
+        return artigo_up
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_artigo(

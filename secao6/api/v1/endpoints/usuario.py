@@ -81,6 +81,7 @@ async def put_usuario(id: int, usuario: UsuarioSchemaUp, db: AsyncSession = Depe
             usuario_up.senha = gerar_hash_senha(usuario.senha) if usuario.senha != None else usuario_up.senha
             
             await session.commit()
+            return usuario_up
             
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_usuario(id: int, db: AsyncSession = Depends(get_session)):
