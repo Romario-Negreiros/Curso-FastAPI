@@ -24,7 +24,7 @@ async def post_artigo(
     usuario_logado: UsuarioModel = Depends(get_current_user),
     db: AsyncSession = Depends(get_session),
 ):
-    novo_artigo = ArtigoSchema(
+    novo_artigo = ArtigoModel(
         titulo=artigo.titulo,
         descricao=artigo.descricao,
         url_fonte=artigo.url_fonte,
@@ -42,7 +42,7 @@ async def get_artigo(db: AsyncSession = Depends(get_session)):
     async with db as session:
         query = select(ArtigoModel)
         result = await session.execute(query)
-        artigos: List[ArtigoModel] = result.scalar().unique().all()
+        artigos: List[ArtigoModel] = result.scalars().unique().all()
         if len(artigos) == 0:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND, detail="Nehnum artigo existente!"

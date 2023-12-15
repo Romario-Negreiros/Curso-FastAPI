@@ -65,7 +65,7 @@ async def get_usuario(id: int, db: AsyncSession = Depends(get_session)):
     else:
         return usuario
 
-@router.put("/{id}", status_code=status.HTTP_202_OK, response_model=UsuarioSchemaBase)
+@router.put("/{id}", status_code=status.HTTP_200_OK, response_model=UsuarioSchemaBase)
 async def put_usuario(id: int, usuario: UsuarioSchemaUp, db: AsyncSession = Depends(get_session)):
     async with db as session:
         query = select(UsuarioModel).filter(UsuarioModel.id == id)
@@ -102,4 +102,4 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends(), db: AsyncSessi
     if not usuario:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, default="Dados de acesso incorretos.")
     
-    return JSONResponse(context={"access_token": criar_token_acesso(sub=usuario.id), "token_type": "bearer"}, status_code=status.HTTP_200_OK)
+    return JSONResponse({"access_token": criar_token_acesso(sub=usuario.id), "token_type": "bearer"}, status_code=status.HTTP_200_OK)

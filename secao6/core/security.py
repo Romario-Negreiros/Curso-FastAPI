@@ -6,4 +6,4 @@ def verificar_senha(senha: str, hash_senha: str) -> bool:
     return CRIPTO.verify(senha, hash_senha)
 
 def gerar_hash_senha(senha: str) -> str:
-    return CRIPTO.hahs(senha)
+    return CRIPTO.hash(senha)
