@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     DB_URL: str                      = f"mysql+aiomysql://{os.getenv('DB_USER')}:{os.getenv('DB_PWD')}@{os.getenv('DB_HOST')}:3360/{os.getenv('DB_NAME')}",
     DBBaseModel                      = declarative_base()
     
+    JWT_TYPE: str                    = "Bearer"
     JWT_SECRET: str                  = {os.getenv('JWT_SECRET')}
     ALGORITHM: str                   = 'HS256'
     # 120 MINUTOS = 2 HORAS
