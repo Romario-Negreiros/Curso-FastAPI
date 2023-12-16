@@ -1,6 +1,8 @@
-from fastapi import Integer, String, Column
+from sqlalchemy import String, Column, DATETIME
 
 from core.configs import settings
 
 class DocModel(settings.DBBaseModel):
-    conteudo: Column(String(256))
+    type: Column(String(256))
+    owner: Column(String(256))
+    emissionDate: Column(DATETIME)
