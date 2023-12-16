@@ -14,7 +14,8 @@ class Settings(BaseSettings):
     
     JWT_SECRET: str                  = {os.getenv('JWT_SECRET')}
     ALGORITHM: str                   = 'HS256'
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24 * 7
+    # 120 MINUTOS = 2 HORAS
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 120
     
     class Config:
         case_sensitive = True
