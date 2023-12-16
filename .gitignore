@@ -1,6 +1,6 @@
 Lib
-Include
 Scripts
-__pycache__
-*.cfg
+Include
+venv
 *.env
+__pycache__
